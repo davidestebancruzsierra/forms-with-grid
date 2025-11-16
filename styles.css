@@ -1,6 +1,28 @@
+/* ========================================
+   TABLE OF CONTENTS
+   ========================================
+   1. BASE STYLES & RESET
+   2. HEADER & NAVIGATION
+   3. PAGE LAYOUT & STRUCTURE
+   4. IMAGES & MEDIA
+   5. SIDEBAR
+   6. FOOTER
+   7. BACK TO TOP BUTTON
+   8. RESPONSIVE (GLOBAL)
+   9. AUSTRALIA PAGE (Sidebar Right)
+   10. CONTACT US 1 (Blue Form)
+   11. CONTACT US 2 (Minimal Form)
+   12. CONTACT US 3 (Booking Form)
+   13. CONTACT US 4 (Job Application)
+   ======================================== */
+
+/* ========================================
+   1. BASE STYLES & RESET
+   ======================================== */
+
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 96px; /* account for fixed header height */
+    scroll-padding-top: 96px;
 }
 
 * {
@@ -13,6 +35,10 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     background-color: #000;
 }
+
+/* ========================================
+   2. HEADER & NAVIGATION
+   ======================================== */
 
 header {
     background-color: #000;
@@ -48,108 +74,7 @@ header {
     line-height: 0;
 }
 
-/* Clase para imágenes pequeñas (uso: class="small-img") */
-.small-img {
-    max-width: 187.5px;
-    width: 75%;
-    height: auto;
-    display: block;
-    margin: 18px auto;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-}
-
-/* Variante más pequeña para imágenes insertadas en texto */
-.small-img-sm {
-    max-width: 225px;
-    width: 75%;
-    height: auto;
-    display: block;
-}
-
-/* Contenedor de cabecera con imágenes para la página Antarctica */
-.antarctica-photos {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-    margin: 16px 0 22px 0;
-    flex-wrap: nowrap;
-}
-
-.antarctica-photos img {
-    max-width: 420px;
-    width: auto;
-    flex: 0 0 420px;
-    height: auto;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    object-fit: cover;
-}
-
-@media (max-width: 768px) {
-    .antarctica-photos img {
-        max-width: 220px;
-        flex: 0 0 220px;
-    }
-}
-
-@media (max-width: 480px) {
-    .antarctica-photos {
-        flex-wrap: wrap;
-    }
-    .antarctica-photos img {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}
-
-/* Flex-based media component */
-.media {
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-}
-
-.media img {
-    flex: 0 0 220px;
-    max-width: 40%;
-    width: auto;
-    height: auto;
-    border-radius: 8px;
-    margin: 0;
-    align-self: flex-start;
-}
-
-.media .media-body {
-    flex: 1 1 auto;
-}
-
-/* Modifier: image on the right, text on the left */
-.media--right {
-    flex-direction: row-reverse;
-}
-
-@media (max-width: 768px) {
-    .media {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .media img {
-        max-width: 100%;
-        flex: 0 0 auto;
-    }
-
-    .media .media-body {
-        width: 100%;
-    }
-
-    .media--right {
-        flex-direction: column;
-    }
-}
+/* Navigation Styles */
 
 nav {
     display: flex;
@@ -167,6 +92,8 @@ nav a {
 nav a:hover {
     color: #FF00FF;
 }
+
+/* Dropdown Menu */
 
 .dropdown {
     position: relative;
@@ -203,6 +130,10 @@ nav a:hover {
     display: block;
 }
 
+/* ========================================
+   3. PAGE LAYOUT & STRUCTURE
+   ======================================== */
+
 .page {
     display: flex;
     flex-direction: column;
@@ -226,7 +157,7 @@ nav a:hover {
     border-radius: 8px;
 }
 
-/* Mantener el color #AED3CF solo para Contact Us 2 */
+/* Special background for Contact Us 2 page */
 .contact2-page .main-content {
     background-color: #AED3CF;
 }
@@ -251,136 +182,7 @@ nav a:hover {
     margin-bottom: 15px;
 }
 
-.sidebar {
-    width: 100%;
-    background-color: #2a2a2a;
-    padding: 30px 20px;
-    position: static;
-    height: auto;
-    max-height: none;
-    overflow-y: visible;
-    border-radius: 8px;
-    border: 2px solid #5cb3cc;
-    box-shadow: 0 4px 12px rgba(92, 179, 204, 0.3), 0 0 0 3px rgba(255, 0, 255, 0.2);
-    transition: all 0.3s ease;
-    order: 2;
-}
-
-/* Indicador visual cuando el sidebar está en modo sticky (scrolling) */
-.sidebar::before {
-    content: "FIXED";
-    position: absolute;
-    top: -30px;
-    right: 10px;
-    background: linear-gradient(45deg, #FF00FF, #4a9fd8);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: bold;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    display: none;
-}
-
-/* Mostrar indicador cuando se hace scroll (simulado con hover para demo) */
-.page:not(:hover) .sidebar::before {
-    opacity: 0;
-}
-
-.sidebar h2 {
-    color: #999;
-    font-size: 20px;
-    margin-bottom: 20px;
-    font-weight: 400;
-    border-bottom: 1px solid #5cb3cc;
-    padding-bottom: 8px;
-}
-
-.sidebar ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-}
-
-.sidebar ul li {
-    margin-bottom: 0;
-}
-
-.sidebar ul li a {
-    color: #5cb3cc;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease, padding-left 0.3s ease;
-}
-
-.sidebar ul li a:hover {
-    color: #FF00FF;
-    padding-left: 10px;
-}
-
-footer {
-    background-color: #000;
-    padding: 20px 30px;
-    border-top: 1px solid #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-}
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #333;
-    flex-wrap: wrap;
-}
-
-.footer-links a {
-    color: #5cb3cc;
-    text-decoration: none;
-    font-size: 13px;
-    transition: color 0.3s ease;
-    white-space: nowrap;
-}
-
-.footer-links a:hover {
-    color: #FF00FF;
-}
-
-.copyright {
-    color: #888;
-    font-size: 12px;
-    text-align: center;
-}
-
-@media (min-width: 769px) {
-    footer {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 40px;
-    }
-
-    .footer-links {
-        padding-bottom: 0;
-        margin-bottom: 0;
-        border-bottom: none;
-        justify-content: flex-start;
-        gap: 20px;
-    }
-
-    .copyright {
-        text-align: right;
-    }
-}
+/* Welcome Container (Home Page) */
 
 .welcome-container {
     max-width: 100%;
@@ -477,6 +279,356 @@ footer {
     transition: all 0.3s ease;
 }
 
+/* ========================================
+   4. IMAGES & MEDIA
+   ======================================== */
+
+/* Small Image Classes */
+
+.small-img {
+    max-width: 187.5px;
+    width: 75%;
+    height: auto;
+    display: block;
+    margin: 18px auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.small-img-sm {
+    max-width: 225px;
+    width: 75%;
+    height: auto;
+    display: block;
+}
+
+/* Antarctica Photos Container */
+
+.antarctica-photos {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0 22px 0;
+    flex-wrap: nowrap;
+}
+
+.antarctica-photos img {
+    max-width: 420px;
+    width: auto;
+    flex: 0 0 420px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .antarctica-photos img {
+        max-width: 220px;
+        flex: 0 0 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .antarctica-photos {
+        flex-wrap: wrap;
+    }
+    .antarctica-photos img {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Flex Media Component */
+
+.media {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.media img {
+    flex: 0 0 220px;
+    max-width: 40%;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    margin: 0;
+    align-self: flex-start;
+}
+
+.media .media-body {
+    flex: 1 1 auto;
+}
+
+.media--right {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+    .media {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .media img {
+        max-width: 100%;
+        flex: 0 0 auto;
+    }
+
+    .media .media-body {
+        width: 100%;
+    }
+
+    .media--right {
+        flex-direction: column;
+    }
+}
+
+/* ========================================
+   5. SIDEBAR
+   ======================================== */
+
+.sidebar {
+    width: 100%;
+    background-color: #2a2a2a;
+    padding: 30px 20px;
+    position: static;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+    border-radius: 8px;
+    border: 2px solid #5cb3cc;
+    box-shadow: 0 4px 12px rgba(92, 179, 204, 0.3), 0 0 0 3px rgba(255, 0, 255, 0.2);
+    transition: all 0.3s ease;
+    order: 2;
+}
+
+/* Indicador visual cuando el sidebar está en modo sticky (scrolling) */
+.sidebar::before {
+    content: "FIXED";
+    position: absolute;
+    top: -30px;
+    right: 10px;
+    background: linear-gradient(45deg, #FF00FF, #4a9fd8);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    display: none;
+}
+
+/* Mostrar indicador cuando se hace scroll (simulado con hover para demo) */
+.page:not(:hover) .sidebar::before {
+    opacity: 0;
+}
+
+.sidebar h2 {
+    color: #999;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    border-bottom: 1px solid #5cb3cc;
+    padding-bottom: 8px;
+}
+
+.sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.sidebar ul li {
+    margin-bottom: 0;
+}
+
+.sidebar ul li a {
+    color: #5cb3cc;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    color: #FF00FF;
+    padding-left: 10px;
+}
+
+/* ========================================
+   6. FOOTER
+   ======================================== */
+
+footer {
+    background-color: #000;
+    padding: 20px 30px;
+    border-top: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #5cb3cc;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.footer-links a:hover {
+    color: #FF00FF;
+}
+
+.copyright {
+    color: #888;
+    font-size: 12px;
+    text-align: center;
+}
+
+@media (min-width: 769px) {
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+    }
+
+    .footer-links {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
+        justify-content: flex-start;
+        gap: 20px;
+    }
+
+    .copyright {
+        text-align: right;
+    }
+}
+
+/* ========================================
+   7. BACK TO TOP BUTTON
+   ======================================== */
+
+.welcome-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8fdff 0%, #e3f2fd 100%);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #4a9fd8;
+}
+
+.welcome-container h1 {
+    color: #2c3e50;
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-content p {
+    color: #34495e;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+.penguin-facts {
+    background-color: #ffffff;
+    padding: 18px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 5px solid #FF00FF;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.penguin-facts h2 {
+    color: #2c3e50;
+    margin-bottom: 12px;
+    font-size: 1.3em;
+    border: none;
+    padding: 0;
+}
+
+.penguin-facts ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.penguin-facts li {
+    color: #34495e;
+    padding: 6px 0;
+    padding-left: 22px;
+    position: relative;
+    font-size: 0.95em;
+}
+
+.penguin-facts li:before {
+    content: "►";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FF00FF;
+    font-size: 0.8em;
+}
+
+.cta-section {
+    background: linear-gradient(45deg, #FF00FF, #4a9fd8);
+    padding: 18px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cta-section p {
+    color: white;
+    font-size: 1.1em;
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-container:hover {
+    transform: translateY(-3px);
+    transition: transform 0.3s ease;
+}
+
+.penguin-facts li:hover {
+    color: #FF00FF;
+    transform: translateX(3px);
+    transition: all 0.3s ease;
+}
+
+/* ========================================
+   7. BACK TO TOP BUTTON
+   ======================================== */
+
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -539,6 +691,14 @@ footer {
         box-shadow: 0 4px 25px rgba(255, 0, 255, 0.8);
     }
 }
+
+.back-to-top:focus {
+    outline: none;
+}
+
+/* ========================================
+   8. RESPONSIVE (GLOBAL)
+   ======================================== */
 
 .back-to-top {
     animation: pulse 2s ease-in-out infinite;
@@ -649,7 +809,7 @@ footer {
 }
 
 /* ========================================
-   AUSTRALIA PAGE - Sidebar on the right
+   9. AUSTRALIA PAGE (Sidebar Right)
    ======================================== */
 
 .page--sidebar-right {
@@ -754,7 +914,10 @@ footer {
     }
 }
 
-/* Estilos para el formulario de contacto */
+/* ========================================
+   10. CONTACT US 1 (Blue Form)
+   ======================================== */
+
 .contact-form-section {
     background: #162AE3;
     border-radius: 20px;
@@ -898,7 +1061,10 @@ footer {
     }
 }
 
-/* Estilos para formulario minimalista */
+/* ========================================
+   11. CONTACT US 2 (Minimal Form)
+   ======================================== */
+
 .contact-minimal-section {
     background-color: #F2EDE6;
     border-radius: 20px;
@@ -1187,13 +1353,13 @@ footer {
 }
 
 /* ========================================
-   BOOKING FORM (Contact Us 3)
+   12. CONTACT US 3 (Booking Form)
    ======================================== */
 
 .booking-form-section {
     background-color: #FFFFFF;
     border-radius: 15px;
-    padding: 50px 60px;
+    padding: 100px 60px;
     margin: 40px auto;
     max-width: 800px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -1226,7 +1392,7 @@ footer {
 .booking-form-column {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 50px;
 }
 
 .booking-form-field {
@@ -1298,7 +1464,7 @@ footer {
     background-color: #4A90E2;
     color: white;
     border: none;
-    padding: 14px 40px;
+    padding: 14px 30px;
     font-size: 1rem;
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
@@ -1375,7 +1541,7 @@ footer {
 }
 
 /* ========================================
-   JOB APPLICATION FORM (Contact Us 4)
+   13. CONTACT US 4 (Job Application)
    ======================================== */
 
 .job-application-section {
