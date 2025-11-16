@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Penguin World</title>
+    <style>
+        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background-color: #000;
+        }
+
+        header {
+            background-color: #000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .image-container {
+            display: flex;
+            align-items: center;
+            margin: 8px 12px;
+        }
+
+        .image-container img {
+            height: 56px;
+            width: auto;
+            display: block;
+            background: none;
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        /* Clase para imágenes pequeñas (uso: class="small-img") */
+        .small-img {
+            max-width: 250px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 18px auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        nav {
+            display: flex;
+            gap: 18px;
+            position: relative;
+        }
+
+        nav a {
+            color: #5cb3cc;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #FF00FF;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #111;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+            border-radius: 6px;
+            top: 25px;
+            left: 0;
+            z-index: 2000;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 10px;
+            color: #5cb3cc;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #FF00FF;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .page {
+            display: flex;
+            min-height: 80vh;
+            padding-top: 84px;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .main-content {
+            flex: 1;
+            background-color: #f0f0f0;
+            padding: 30px 40px;
+            border-radius: 8px;
+        }
+
+        .main-content h1 {
+            font-size: 28px;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        .main-content p {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #2a2a2a;
+            padding: 30px 20px;
+            position: sticky;
+            top: 92px;
+            height: fit-content;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            border-radius: 8px;
+            border: 2px solid #5cb3cc;
+            box-shadow: 0 4px 12px rgba(92, 179, 204, 0.3), 0 0 0 3px rgba(255, 0, 255, 0.2);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .sidebar h2 {
+            color: #999;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            border-bottom: 1px solid #5cb3cc;
+            padding-bottom: 8px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar ul li a {
+            color: #5cb3cc;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sidebar ul li a:hover {
+            color: #FF00FF;
+            padding-left: 10px;
+        }
+
+        footer {
+            background-color: #000;
+            padding: 20px 30px;
+            border-top: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #5cb3cc;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .footer-links a:hover {
+            color: #FF00FF;
+        }
+
+        .copyright {
+            color: #888;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        @media (min-width: 769px) {
+            footer {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 40px;
+            }
+
+            .footer-links {
+                padding-bottom: 0;
+                margin-bottom: 0;
+                border-bottom: none;
+                justify-content: flex-start;
+                gap: 20px;
+            }
+
+            .copyright {
+                text-align: right;
+            }
+        }
+
+        .welcome-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8fdff 0%, #e3f2fd 100%);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid #4a9fd8;
+        }
+
+        .welcome-container h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-content p {
+            color: #34495e;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        .penguin-facts {
+            background-color: #ffffff;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #FF00FF;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .penguin-facts h2 {
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+
+        .penguin-facts ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .penguin-facts li {
+            color: #34495e;
+            padding: 6px 0;
+            padding-left: 22px;
+            position: relative;
+            font-size: 0.95em;
+        }
+
+        .penguin-facts li:before {
+            content: "🐧";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .cta-section {
+            background: linear-gradient(45deg, #FF00FF, #4a9fd8);
+            padding: 18px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cta-section p {
+            color: white;
+            font-size: 1.1em;
+            margin: 0;
+            text-align: center;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .welcome-container:hover {
+            transform: translateY(-3px);
+            transition: transform 0.3s ease;
+        }
+
+        .penguin-facts li:hover {
+            color: #FF00FF;
+            transform: translateX(3px);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #FF00FF, #4a9fd8);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 22px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 8px 12px;
+            }
+
+            .page {
+                padding-top: 104px;
+                flex-direction: column;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                order: -1;
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .main-content {
+                padding: 25px 20px;
+            }
+
+            .welcome-container {
+                padding: 20px 15px;
+            }
+
+            .welcome-container h1 {
+                font-size: 2em;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .welcome-container h1 {
+                font-size: 1.8em;
+            }
+
+            .welcome-content p {
+                font-size: 1em;
+            }
+
+            .footer-links {
+                gap: 15px;
+            }
+
+            .footer-links a {
+                font-size: 12px;
+            }
+
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="top">
+        <div class="image-container">
+            <a href="home.html"><img src="./assets/pinguinologo.jpg" alt="Penguin Logo"></a>
+        </div>
+
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="Pages/about.html">About</a>
+
+            <div class="dropdown">
+                <a href="Pages/services.html">Services ▾</a>
+                <div class="dropdown-content">
+                    <a href="Pages/services.html#servicio1">Penguin Tours</a>
+                    <a href="Pages/services.html#servicio2">Conservation Programs</a>
+                    <a href="Pages/services.html#servicio3">Educational Workshops</a>
+                    <a href="Pages/services.html#servicio4">Adoption Program</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="Pages/Contact Us/contact.html">Contact ▾</a>
+                <div class="dropdown-content">
+                    <a href="Pages/Contact Us/contact.html">Contact Us</a>
+                    <a href="Pages/Contact Us/contact2.html">Contact Us 2</a>
+                    <a href="Pages/Contact Us/contact3.html">Book your appointment</a>
+                    <a href="Pages/Contact Us/contact4.html">Job application</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page">
+        <div class="container">
+            <main class="main-content">
+                <div class="welcome-container">
+                    <h1>Welcome to the World of Penguins! 🐧</h1>
+                    
+                    <div class="welcome-content">
+                        <p>Dive into the fascinating universe of these incredible seabirds that have captured the hearts of millions around the world. In our digital sanctuary, we celebrate the majesty, curiosity, and unique charm of penguins.</p>
+                        
+                        <div class="penguin-facts">
+                            <h2>Did you know...?</h2>
+                            <ul>
+                                <li>There are 18 species of penguins in the world</li>
+                                <li>Emperor penguins can dive up to 500 meters deep</li>
+                                <li>They spend up to 75% of their lives in water</li>
+                                <li>They have special glands that filter salt from seawater</li>
+                            </ul>
+                        </div>
+                        
+                        <p>From the frozen lands of Antarctica to the coasts of South Africa and South America, we'll explore together every aspect of their lives: their mating habits, hunting techniques, conservation challenges, and the threats they face in a changing world.</p>
+                        
+                        <p>Whether you're a researcher, conservationist, or simply a lover of these charismatic animals, here you'll find a home where passion for penguins is our common language.</p>
+                        
+                        <div class="cta-section">
+                            <p><strong>Explore, learn, and join our penguin community!</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <aside class="sidebar">
+                <h2>Penguin Habitats</h2>
+                <ul>
+                    <li><a href="Pages/Continents/antarctica.html">Antarctica</a></li>
+                    <li><a href="Pages/Continents/southamerica.html">South America</a></li>
+                    <li><a href="Pages/Continents/africa.html">Africa</a></li>
+                    <li><a href="Pages/Continents/oceania.html">Oceania</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="home.html">Home</a>
+            <a href="Pages/about.html">About</a>
+            <a href="Pages/services.html">Services</a>
+            <a href="Pages/Continents/antarctica.html">Antarctica</a>
+            <a href="Pages/Continents/southamerica.html">South America</a>
+            <a href="Pages/Continents/africa.html">Africa</a>
+            <a href="Pages/Continents/oceania.html">Oceania</a>
+            <a href="Pages/Continents/australia.html">Australia</a>
+            <a href="Pages/Contact Us/contact.html">Contact</a>
+        </div>
+        <p class="copyright">© 2024 Penguin World - All rights reserved</p>
+    </footer>
+
+    <a href="#" class="back-to-top" aria-label="Volver arriba" title="Back to top">↑</a>
+</body>
+</html>
+

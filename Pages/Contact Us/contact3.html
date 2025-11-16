@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book your appointment - Penguin World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="contact3-page">
+    <header id="top">
+        <div class="image-container">
+            <a href="../../home.html">
+                <img src="../../assets/pinguinologo.jpg" alt="Penguin Logo">
+            </a>
+        </div>
+
+        <nav>
+            <a href="../../home.html">Home</a>
+            <a href="../about.html">About</a>
+
+            <div class="dropdown">
+                <a href="../services.html">Services ▾</a>
+                <div class="dropdown-content">
+                    <a href="../services.html#tours">Penguin Tours</a>
+                    <a href="../services.html#conservation">Conservation Programs</a>
+                    <a href="../services.html#workshops">Educational Workshops</a>
+                    <a href="../services.html#adoption">Adoption Program</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="contact.html">Contact ▾</a>
+                <div class="dropdown-content">
+                    <a href="contact.html">Contact Us</a>
+                    <a href="contact2.html">Contact Us 2</a>
+                    <a href="contact3.html">Book your appointment</a>
+                    <a href="contact4.html">Job application</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page">
+        <div class="container">
+            <main class="main-content">
+                <h1>Book your appointment</h1>
+                <p>Get in touch with us using our appointment booking form. We're here to answer all your questions about penguins and conservation!</p>
+                
+                <!-- Formulario de Reserva -->
+                <div class="booking-form-section">
+                    <div class="booking-form-container">
+                        <h2>Book your appointment now</h2>
+                        <p class="booking-subtitle">So our team can reach out to you on time</p>
+                        
+                        <form action="#" method="POST">
+                            <div class="booking-form-grid">
+                                <div class="booking-form-column">
+                                    <div class="booking-form-field">
+                                        <label for="fullname">Full Name</label>
+                                        <input type="text" id="fullname" name="fullname" placeholder="eg: John Doe" required>
+                                    </div>
+                                    
+                                    <div class="booking-form-field">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" placeholder="eg: john@email.com" required>
+                                    </div>
+                                    
+                                    <div class="booking-form-field">
+                                        <label for="phone">Phone Number</label>
+                                        <div class="phone-input-wrapper">
+                                            <select id="country-code" name="country-code" class="country-code">
+                                                <option value="+971">+971</option>
+                                                <option value="+1">+1</option>
+                                                <option value="+44">+44</option>
+                                                <option value="+91">+91</option>
+                                            </select>
+                                            <input type="tel" id="phone" name="phone" placeholder="543210987" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="booking-form-column">
+                                    <div class="booking-form-field">
+                                        <label for="date">Available Date</label>
+                                        <select id="date" name="date" required>
+                                            <option value="">Select</option>
+                                            <option value="2024-01-15">January 15, 2024</option>
+                                            <option value="2024-01-16">January 16, 2024</option>
+                                            <option value="2024-01-17">January 17, 2024</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="booking-form-field">
+                                        <label for="message">Share Your Message</label>
+                                        <textarea id="message" name="message" placeholder="Message" rows="4" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="booking-submit-btn">Book Now →</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+            <aside class="sidebar">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="../services.html">Our Services</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="../Continents/antarctica.html">Antarctica</a></li>
+                    <li><a href="../Continents/oceania.html">Oceania</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../../home.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="../services.html">Services</a>
+            <a href="../Continents/antarctica.html">Antarctica</a>
+            <a href="../Continents/southamerica.html">South America</a>
+            <a href="../Continents/africa.html">Africa</a>
+            <a href="../Continents/oceania.html">Oceania</a>
+            <a href="../Continents/australia.html">Australia</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p class="copyright">© 2024 Penguin World - All rights reserved</p>
+    </footer>
+
+    <a href="#" class="back-to-top show" aria-label="Volver arriba" title="Back to top">↑</a>
+</body>
+</html>

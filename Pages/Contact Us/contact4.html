@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application - Penguin World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="contact4-page">
+    <header id="top">
+        <div class="image-container">
+            <a href="../../home.html">
+                <img src="../../assets/pinguinologo.jpg" alt="Penguin Logo">
+            </a>
+        </div>
+
+        <nav>
+            <a href="../../home.html">Home</a>
+            <a href="../about.html">About</a>
+
+            <div class="dropdown">
+                <a href="../services.html">Services ▾</a>
+                <div class="dropdown-content">
+                    <a href="../services.html#tours">Penguin Tours</a>
+                    <a href="../services.html#conservation">Conservation Programs</a>
+                    <a href="../services.html#workshops">Educational Workshops</a>
+                    <a href="../services.html#adoption">Adoption Program</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="contact.html">Contact ▾</a>
+                <div class="dropdown-content">
+                    <a href="contact.html">Contact Us</a>
+                    <a href="contact2.html">Contact Us 2</a>
+                    <a href="contact3.html">Book your appointment</a>
+                    <a href="contact4.html">Job application</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page">
+        <div class="container">
+            <main class="main-content">
+                <h1>Job Application</h1>
+                <p>Join our team! Fill out the application form below to apply for a position at Penguin World.</p>
+                
+                <!-- Formulario de Aplicación de Trabajo -->
+                <div class="job-application-section">
+                    <div class="job-application-container">
+                        <h2>Job Application ( Web )</h2>
+                        
+                        <form action="#" method="POST">
+                            <div class="job-form-grid">
+                                <div class="job-form-field">
+                                    <label for="firstname">First Name</label>
+                                    <input type="text" id="firstname" name="firstname" placeholder="Enter First Name......." required>
+                                </div>
+                                
+                                <div class="job-form-field">
+                                    <label for="lastname">Last Name</label>
+                                    <input type="text" id="lastname" name="lastname" placeholder="Enter Last Name......." required>
+                                </div>
+                                
+                                <div class="job-form-field">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Enter Email......." required>
+                                </div>
+                                
+                                <div class="job-form-field">
+                                    <label for="jobrole">Job Role</label>
+                                    <select id="jobrole" name="jobrole" required>
+                                        <option value="backend-developer">Backend Developer</option>
+                                        <option value="frontend-developer">Frontend Developer</option>
+                                        <option value="fullstack-developer">Fullstack Developer</option>
+                                        <option value="ui-ux-designer">UI/UX Designer</option>
+                                        <option value="data-scientist">Data Scientist</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="job-form-field full-width">
+                                    <label for="address">Enter Address</label>
+                                    <textarea id="address" name="address" rows="4" required></textarea>
+                                </div>
+                                
+                                <div class="job-form-field">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" name="city" placeholder="Enter City......." required>
+                                </div>
+                                
+                                <div class="job-form-field">
+                                    <label for="pincode">Pincode</label>
+                                    <input type="text" id="pincode" name="pincode" placeholder="Enter Pincode......." required>
+                                </div>
+                                
+                                <div class="job-form-field">
+                                    <label for="startdate">Start Date</label>
+                                    <input type="date" id="startdate" name="startdate" value="2021-12-30" required>
+                                </div>
+                                
+                                <div class="job-form-field">
+                                    <label for="cv">Upload Your CV</label>
+                                    <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx,.jpg,.jpeg" required>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="job-submit-btn">Apply Now</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+            <aside class="sidebar">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="../services.html">Our Services</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="../Continents/antarctica.html">Antarctica</a></li>
+                    <li><a href="../Continents/oceania.html">Oceania</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../../home.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="../services.html">Services</a>
+            <a href="../Continents/antarctica.html">Antarctica</a>
+            <a href="../Continents/southamerica.html">South America</a>
+            <a href="../Continents/africa.html">Africa</a>
+            <a href="../Continents/oceania.html">Oceania</a>
+            <a href="../Continents/australia.html">Australia</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p class="copyright">© 2024 Penguin World - All rights reserved</p>
+    </footer>
+
+    <a href="#" class="back-to-top show" aria-label="Volver arriba" title="Back to top">↑</a>
+</body>
+</html>

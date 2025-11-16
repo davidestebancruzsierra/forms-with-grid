@@ -1,0 +1,978 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin World</title>
+    <style>
+        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background-color: #000;
+        }
+
+        header {
+            background-color: #000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .image-container {
+            display: flex;
+            align-items: center;
+            margin: 8px 12px;
+        }
+
+        .image-container img {
+            height: 56px;
+            width: auto;
+            display: block;
+            background: none;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            cursor: pointer;
+        }
+
+        /* Clase para imágenes pequeñas (uso: class="small-img") */
+        .small-img {
+            max-width: 250px; /* tamaño máximo en escritorio */
+            width: 100%;      /* responsiva en pantallas pequeñas */
+            height: auto;
+            display: block;
+            margin: 18px auto; /* centrada y con separación */
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        /* Variante más pequeña para imágenes insertadas en texto */
+        .small-img-sm {
+            max-width: 300px; /* más pequeño que .small-img */
+            width: auto;      /* preservar proporción y evitar 100% fill */
+            height: auto;
+            display: block;
+        }
+
+        /* Contenedor de cabecera con imágenes para la página Antarctica */
+        .antarctica-photos {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+            margin: 16px 0 22px 0;
+            flex-wrap: nowrap; /* forzar fila lado a lado en pantallas suficientemente anchas */
+        }
+
+        .antarctica-photos img {
+            max-width: 420px;
+            width: auto;
+            flex: 0 0 420px;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .antarctica-photos img {
+                max-width: 220px;
+                flex: 0 0 220px;
+            }
+        }
+
+        /* En pantallas muy pequeñas apilar las imágenes */
+        @media (max-width: 480px) {
+            .antarctica-photos {
+                flex-wrap: wrap;
+            }
+            .antarctica-photos img {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+        
+
+        /* Float-based helpers removed in favor of flexbox media component */
+
+        /* Flex-based media component to replace floats when desired
+           Use on pages that should have image left and text to the right
+           (keeps responsive behavior: stacked on small screens) */
+        .media {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+
+        .media img {
+            flex: 0 0 220px; /* fixed-ish image column */
+            max-width: 40%;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+            margin: 0;
+            align-self: flex-start;
+        }
+
+        .media .media-body {
+            flex: 1 1 auto;
+        }
+
+        /* Modifier: image on the right, text on the left */
+        .media--right {
+            flex-direction: row-reverse;
+        }
+
+        @media (max-width: 768px) {
+            .media {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .media img {
+                max-width: 100%;
+                flex: 0 0 auto;
+            }
+
+            .media .media-body {
+                width: 100%;
+            }
+
+            .media--right {
+                flex-direction: column;
+            }
+        }
+
+        /* No float-specific responsive overrides needed; media component handles stacking */
+
+        nav {
+            display: flex;
+            gap: 18px;
+            position: relative;
+        }
+
+        nav a {
+            color: #5cb3cc;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #FF00FF;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #111;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+            border-radius: 6px;
+            top: 25px;
+            left: 0;
+            z-index: 2000;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 10px;
+            color: #5cb3cc;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #FF00FF;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .page {
+            display: flex;
+            min-height: 80vh;
+            padding-top: 84px;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .main-content {
+            flex: 1;
+            background-color: #f0f0f0;
+            padding: 30px 40px;
+            border-radius: 8px;
+        }
+
+        .main-content h1 {
+            font-size: 28px;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        .main-content p {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #2a2a2a;
+            padding: 30px 20px;
+            position: sticky;
+            top: 92px;
+            height: fit-content;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            border-radius: 8px;
+            border: 2px solid #5cb3cc;
+            box-shadow: 0 4px 12px rgba(92, 179, 204, 0.3), 0 0 0 3px rgba(255, 0, 255, 0.2);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .sidebar h2 {
+            color: #999;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            border-bottom: 1px solid #5cb3cc;
+            padding-bottom: 8px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar ul li a {
+            color: #5cb3cc;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sidebar ul li a:hover {
+            color: #FF00FF;
+            padding-left: 10px;
+        }
+
+        footer {
+            background-color: #000;
+            padding: 20px 30px;
+            border-top: 1px solid #333;
+            display: flex;                 /* make footer a flex container */
+            flex-direction: column;       /* stack on small screens */
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        /* Links area inside footer (flex child) */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #5cb3cc;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .footer-links a:hover {
+            color: #FF00FF;
+        }
+
+        .copyright {
+            color: #888;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* On larger screens show footer content in a row */
+        @media (min-width: 769px) {
+            footer {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 40px;
+            }
+
+            .footer-links {
+                padding-bottom: 0;
+                margin-bottom: 0;
+                border-bottom: none;
+                justify-content: flex-start;
+                gap: 20px;
+            }
+
+            .copyright {
+                text-align: right;
+            }
+        }
+
+        .welcome-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8fdff 0%, #e3f2fd 100%);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid #4a9fd8;
+        }
+
+        .welcome-container h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-content p {
+            color: #34495e;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        .penguin-facts {
+            background-color: #ffffff;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #FF00FF;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .penguin-facts h2 {
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+
+        .penguin-facts ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .penguin-facts li {
+            color: #34495e;
+            padding: 6px 0;
+            padding-left: 22px;
+            position: relative;
+            font-size: 0.95em;
+        }
+
+        .penguin-facts li:before {
+            content: "🐧";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Quitar el emoji de pingüino solo en la página Oceania */
+        .page#oceania .penguin-facts li:before {
+            content: "";
+            display: none;
+        }
+
+        .page#oceania .penguin-facts li {
+            padding-left: 6px; /* ajustar espacio cuando se elimina el pseudo-elemento */
+        }
+
+        /* Quitar el emoji de pingüino solo en la página Africa */
+        .page#africa .penguin-facts li:before {
+            content: "";
+            display: none;
+        }
+
+        .page#africa .penguin-facts li {
+            padding-left: 6px; /* ajustar espacio cuando se elimina el pseudo-elemento */
+        }
+
+        .cta-section {
+            background: linear-gradient(45deg, #FF00FF, #4a9fd8);
+            padding: 18px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cta-section p {
+            color: white;
+            font-size: 1.1em;
+            margin: 0;
+            text-align: center;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .welcome-container:hover {
+            transform: translateY(-3px);
+            transition: transform 0.3s ease;
+        }
+
+        .penguin-facts li:hover {
+            color: #FF00FF;
+            transform: translateX(3px);
+            transition: all 0.3s ease;
+        }
+
+        /* BACK TO TOP BUTTON */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #FF00FF, #4a9fd8);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 22px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .sticky-note {
+            background: linear-gradient(135deg,#fffbe6,#fff1c2);
+            color: #222;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #e6d89a;
+            margin-bottom: 16px;
+            position: sticky;
+            top: 92px;
+            z-index: 100;
+        }
+
+        /* Sticky small circular back-to-top (bottom-left) - solo visual en home */
+        .sticky-bottom-left {
+            position: sticky;
+            bottom: 20px;              /* se "pega" 20px desde el borde inferior del viewport */
+            display: flex;
+            justify-content: flex-start; /* ubica el botón a la izquierda */
+            padding: 0 20px;           /* separación lateral coherente con layout */
+            z-index: 1100;
+            pointer-events: none;      /* evita bloquear elementos debajo cuando está fuera de vista */
+        }
+
+        .back-to-top-sticky {
+            pointer-events: auto;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(45deg,#FF00FF,#4a9fd8);
+            color: #fff;
+            border: none;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            cursor: pointer;
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform .18s ease, opacity .18s ease;
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        .back-to-top-sticky.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top-sticky:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(92,179,204,0.16);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 8px 12px;
+            }
+
+            .page {
+                padding-top: 104px;
+                flex-direction: column;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                order: -1;
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .main-content {
+                padding: 25px 20px;
+            }
+
+            .welcome-container {
+                padding: 20px 15px;
+            }
+
+            .welcome-container h1 {
+                font-size: 2em;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .welcome-container h1 {
+                font-size: 1.8em;
+            }
+
+            .welcome-content p {
+                font-size: 1em;
+            }
+
+            .footer-links {
+                gap: 15px;
+            }
+
+            .footer-links a {
+                font-size: 12px;
+            }
+
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="top">
+        <div class="image-container">
+            <img src="./assets/pinguinologo.jpg" alt="Penguin Logo" onclick="showPage('home')">
+        </div>
+
+        <nav>
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('about')">About</a>
+
+            <div class="dropdown">
+                <a onclick="showPage('services')">Services ▾</a>
+                <div class="dropdown-content">
+                    <a href="#">Penguin Tours</a>
+                    <a href="#">Conservation Programs</a>
+                    <a href="#">Educational Workshops</a>
+                    <a href="#">Adoption Program</a>
+                </div>
+            </div>
+
+            <a onclick="showPage('contact')">Contact</a>
+        </nav>
+    </header>
+
+    <div id="home" class="page active">
+        
+
+        <div class="container">
+            <main class="main-content">
+                <div class="welcome-container">
+                    <h1>Welcome to the World of Penguins! 🐧</h1>
+                    
+                    <div class="welcome-content">
+                        <p>Dive into the fascinating universe of these incredible seabirds that have captured the hearts of millions around the world. In our digital sanctuary, we celebrate the majesty, curiosity, and unique charm of penguins.</p>
+                        
+                        <div class="penguin-facts">
+                            <h2>Did you know...?</h2>
+                            <ul>
+                                <li>There are 18 species of penguins in the world</li>
+                                <li>Emperor penguins can dive up to 500 meters deep</li>
+                                <li>They spend up to 75% of their lives in water</li>
+                                <li>They have special glands that filter salt from seawater</li>
+                            </ul>
+                        </div>
+                        
+                        <p>From the frozen lands of Antarctica to the coasts of South Africa and South America, we'll explore together every aspect of their lives: their mating habits, hunting techniques, conservation challenges, and the threats they face in a changing world.</p>
+                        
+                        <p>Whether you're a researcher, conservationist, or simply a lover of these charismatic animals, here you'll find a home where passion for penguins is our common language.</p>
+                        
+                        <div class="cta-section">
+                            <p><strong>Explore, learn, and join our penguin community!</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <aside class="sidebar">
+
+                <h2>Penguin Habitats</h2>
+                <ul>
+                    <li><a onclick="showPage('antarctica')">Antarctica</a></li>
+                    <li><a onclick="showPage('southamerica')">South America</a></li>
+                    <li><a onclick="showPage('africa')">Africa</a></li>
+                    <li><a onclick="showPage('oceania')">Oceania</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <div id="about" class="page">
+        <div class="container">
+            <main class="main-content">
+                <h1>About Us</h1>
+                <p>We are a team passionate about penguins, dedicated to their protection, education, and conservation. Our mission is to raise awareness about these amazing creatures and their fragile ecosystems.</p>
+            </main>
+            <aside class="sidebar">
+                <h2>Our Team</h2>
+                <ul>
+                    <li><a href="#">Researchers</a></li>
+                    <li><a href="#">Conservationists</a></li>
+                    <li><a href="#">Volunteers</a></li>
+                    <li><a href="#">Partners</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <div id="services" class="page">
+        <div class="container">
+            <main class="main-content">
+                <h1>Our Services</h1>
+                <p>We offer exciting opportunities to learn about and help protect penguins through our specialized programs. Each service is designed to create meaningful connections between people and these incredible birds.</p>
+            </main>
+            <aside class="sidebar">
+                <h2>Penguin Services</h2>
+                <ul>
+                    <li><a href="#">Penguin Tours</a></li>
+                    <li><a href="#">Conservation Programs</a></li>
+                    <li><a href="#">Educational Workshops</a></li>
+                    <li><a href="#">Adoption Program</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <div id="antarctica" class="page">
+        <div class="container">
+            <main class="main-content">
+                <h1>Antarctica</h1>
+
+                <div class="antarctica-photos">
+                    <img src="./pinguinos oceania/antartida2.jpg" alt="Paisaje de Antarctica" class="small-img">
+                    <img src="./pinguinos oceania/antarcticapenguin.jpeg" alt="Pingüino antártico" class="small-img">
+                </div>
+
+                <p>Antarctica is the classic home of many penguin species, most famously the Emperor penguin and the Adélie penguin. The extreme cold and vast ice sheets shape unique life cycles: penguins here have adapted to breed on ice, endure long fasting periods, and dive into frigid waters to hunt krill and fish.</p>
+
+                <div class="penguin-facts">
+                    <h2>Species & facts</h2>
+                    <ul>
+                        <li>Emperor Penguin (Aptenodytes forsteri) — the largest penguin species</li>
+                        <li>Adélie Penguin (Pygoscelis adeliae) — common along Antarctic coasts</li>
+                        <li>Chinstrap & Gentoo — found on subantarctic islands and parts of the Antarctic Peninsula</li>
+                    </ul>
+                </div>
+
+                <p>Conservation challenges in Antarctica include climate-driven habitat changes, shifting prey availability, and human impacts from fisheries and research activity. International cooperation and protected marine areas help safeguard critical feeding and breeding grounds for these species.</p>
+            </main>
+            <aside class="sidebar">
+                <h2>Antarctic Regions</h2>
+                <ul>
+                    <li><a href="#">Antarctic Peninsula</a></li>
+                    <li><a href="#">Ross Sea</a></li>
+                    <li><a href="#">Weddell Sea</a></li>
+                    <li><a href="#">Subantarctic islands</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <div id="contact" class="page">
+        <div class="container">
+            <main class="main-content">
+                <h1>Contact Us</h1>
+                <p>Get in touch to learn more about our penguin programs or discover how you can contribute to their conservation! We're always happy to hear from fellow penguin enthusiasts.</p>
+            </main>
+            <aside class="sidebar">
+                <h2>Contact Information</h2>
+                <ul>
+                    <li><a href="#">Phone</a></li>
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">Location</a></li>
+                    <li><a href="#">Business Hours</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <div id="oceania" class="page">
+        <div class="container">
+            <main class="main-content">
+                <h1>Oceania</h1>
+                <div class="media">
+                    <img src="pinguinos oceania/auckland.jpg" alt="Pingüinos en Auckland" class="small-img">
+                    <div class="media-body">
+                        <p>In Oceania, unique species of penguins can be found, mainly along the coasts and islands near New Zealand and in subantarctic regions. These areas provide the perfect combination of cold ocean currents, abundant marine life, and isolated nesting grounds that allow penguins to thrive. Among the most remarkable species are the Little Blue Penguin, known for being the smallest in the world, and the Yellow-eyed Penguin, one of the rarest and most endangered. Their habitats range from rocky shorelines and sandy beaches to dense coastal vegetation, where they seek shelter and raise their chicks. Each species has adapted in fascinating ways to its environment—some prefer the cooler, wind-swept islands, while others nest near human settlements and fishing ports. Conservation efforts across Oceania focus on protecting breeding areas, controlling invasive predators, and monitoring population changes caused by climate change and pollution. Local communities and researchers work together to restore habitats and educate visitors about the importance of preserving these extraordinary birds, ensuring that future generations can continue to admire their beauty and resilience.</p>
+                    </div>
+                </div>
+
+                <div class="penguin-facts">
+                    <h2>Featured Species</h2>
+                    <ul>
+                        <li>Little Penguin (Eudyptula minor) — found along the coasts of Australia and New Zealand</li>
+                        <li>Yellow-eyed Penguin (Megadyptes antipodes) — a species endemic to New Zealand</li>
+                        <li>Snares and Fiordland Penguin — populations located on islands in southern New Zealand</li>
+                    </ul>
+                </div>
+
+                <div class="media media--right">
+                    <img src="pinguinos oceania/pinguinoaustralia.jpg" alt="Pingüinos en Oceanía" class="small-img">
+                    <div class="media-body">
+                        <p>The main threats include habitat loss, marine pollution, and accidental capture in fishing operations. As human activities expand along coastlines, nesting areas are often destroyed or disturbed, leaving penguins with fewer safe places to breed and raise their young. Oil spills, plastic waste, and chemical runoff further damage their feeding grounds, contaminating the waters where they hunt for fish and squid. Accidental bycatch in commercial fisheries also poses a serious risk, as penguins can become entangled in fishing nets or hooks while searching for food. These combined pressures have caused significant declines in several penguin populations throughout Oceania. To combat these challenges, many local projects bring together research, habitat restoration, and community engagement. Scientists study migration patterns and breeding behaviors to better understand the needs of each species, while volunteers and local residents help clean beaches, plant native vegetation, and build safe nesting sites. Education programs in schools and coastal communities encourage sustainable fishing practices and raise awareness about the delicate balance of marine ecosystems. Through these collective efforts, conservationists aim not only to protect existing penguin populations but also to create a lasting culture of respect and stewardship for the ocean and its remarkable wildlife.</p>
+                    </div>
+                </div>
+            </main>
+            <aside class="sidebar">
+                <h2>Regiones</h2>
+                <ul>
+                    <li><a onclick="showPage('australia')">Australia</a></li>
+                    <li><a href="#">Nueva Zelanda</a></li>
+                    <li><a href="#">Islas Subantárticas</a></li>
+                    <li><a href="#">Proyectos de conservación</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <div id="australia" class="page">
+        <div class="container">
+            <main class="main-content">
+                <h1>Australia</h1>
+
+                <div class="media">
+                    <img src="pinguinos oceania/pinguinoaustralia.jpg" alt="Pingüinos en Australia" class="small-img">
+                    <div class="media-body">
+                        <p>Australia hosts visiting penguins primarily along its southern coasts and nearby islands. The most iconic species seen here is the Little Penguin, which breeds in colonies around Victoria, Tasmania, and South Australia. These penguins rely on healthy coastal ecosystems, safe nesting burrows, and abundant fish to thrive. Community-led conservation programs, predator control, and responsible tourism have become key to protecting these delicate colonies near urban areas.</p>
+                    </div>
+                </div>
+
+                <div class="penguin-facts">
+                    <h2>Featured species & sites</h2>
+                    <ul>
+                        <li>Little Penguin (Eudyptula minor) — Phillip Island, St Kilda, Bruny Island</li>
+                        <li>Key habitats — protected beaches, rocky shorelines, offshore islets</li>
+                        <li>Conservation — predator exclusion, habitat restoration, public education</li>
+                    </ul>
+                </div>
+
+                <div class="media media--right">
+                    <img src="pinguinos oceania/auckland.jpg" alt="Costa del Pacífico Sur" class="small-img">
+                    <div class="media-body">
+                        <p>Across the broader Australasian region, ocean currents like the Leeuwin and East Australian Current influence prey availability and penguin movements. Coordinated monitoring with New Zealand and subantarctic islands helps track changes in foraging patterns, timing of breeding, and population trends under climate variability.</p>
+                    </div>
+                </div>
+            </main>
+            <aside class="sidebar">
+                <h2>Regiones</h2>
+                <ul>
+                    <li><a href="#">Victoria</a></li>
+                    <li><a href="#">Tasmania</a></li>
+                    <li><a href="#">South Australia</a></li>
+                    <li><a href="#">Western Australia</a></li>
+                    <li><a href="#">Conservation projects</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <div id="southamerica" class="page">
+        <div class="container">
+            <main class="main-content">
+                <h1>South America</h1>
+                <div class="media media--right">
+                    <img src="./pinguinos oceania/pinguinoargentino.jpg" alt="Pingüino argentino" class="small-img small-img-sm">
+                    <div class="media-body">
+                        <p>South America hosts several penguin species across its southern coasts and islands. The region's diverse geography—from the chilly southern tip of Patagonia to the more temperate coasts along Peru and Chile—provides ideal conditions for a variety of penguin species. Notable species include the Magellanic penguin, Humboldt penguin, and the Galápagos penguin, which is particularly remarkable for being the only penguin species that lives near the equator. These penguins occupy a wide range of habitats, from temperate coastal plains and rocky shorelines to remote islands where they can nest safely away from predators. Each species has adapted to its environment in fascinating ways: for instance, the Humboldt penguin thrives along the cold, nutrient-rich waters of the Humboldt Current, while the Galápagos penguin has evolved to cope with warmer equatorial temperatures. South American penguins face unique challenges, including habitat disturbance from human activity, climate variations, and threats from fishing operations. Despite these pressures, many conservation programs are working to monitor populations, protect breeding sites, and educate local communities about sustainable practices, ensuring that these remarkable birds continue to thrive across the continent.</p>
+                    </div>
+                </div>
+
+                <div class="penguin-facts">
+                    <h2>Species & highlights</h2>
+                    <ul>
+                        <li>Magellanic Penguin (Spheniscus magellanicus) — common in southern South America</li>
+                        <li>Humboldt Penguin (Spheniscus humboldti) — found along the coasts of Peru and Chile</li>
+                        <li>Galápagos Penguin (Spheniscus mendiculus) — the only tropical penguin species</li>
+                    </ul>
+                </div>
+
+                <p>Conservation work in South America includes habitat protection, fisheries management, and local community engagement to reduce threats like overfishing and habitat disturbance.</p>
+            </main>
+            <aside class="sidebar">
+                <h2>Regiones</h2>
+                <ul>
+                    <li><a href="#">Patagonia</a></li>
+                    <li><a href="#">Peru & Chile coasts</a></li>
+                    <li><a href="#">Galápagos</a></li>
+                    <li><a href="#">Conservation projects</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <div id="africa" class="page">
+        <div class="container">
+            <main class="main-content">
+                <h1>Africa</h1>
+                <div class="media media--left">
+                    <img src="./pinguinos oceania/pinguinoafricano.jpg" alt="Penguins in Africa" class="small-img">
+
+                    <div class="media-body">
+                        <p>The most well-known penguin in Africa is the African Penguin (Spheniscus demersus), which breeds along the southern African coastline, particularly in South Africa and Namibia. These charming birds are also known as “jackass penguins” because of their loud, donkey-like braying calls. They nest in large colonies on rocky shores, sandy beaches, and offshore islands, often burrowing into the sand or using natural shelters to protect their eggs from the sun and predators.
+
+African Penguins are excellent swimmers and feed mainly on small fish such as sardines and anchovies, as well as squid and crustaceans. However, their populations have declined drastically in recent decades due to habitat loss, overfishing, oil spills, and marine pollution, which reduce their food sources and nesting areas. Conservation efforts, including the establishment of marine protected areas and rehabilitation programs, are helping to safeguard these unique birds and ensure their survival along Africa’s southern coast.</p>
+                    </div>
+                </div>
+
+                <div class="penguin-facts">
+                    <h2>Quick facts</h2>
+                    <ul>
+                        <li>African Penguin — a vulnerable species</li>
+                        <li>Lives in coastal colonies and rocky islands</li>
+                        <li>Main diet: sardines and anchovies</li>
+                    </ul>
+                </div>
+
+                <p>Conservation efforts include protecting nesting sites, captive-breeding programs, and community education to reduce human impacts. Marine reserves and sustainable fisheries management are critical to preserve their food sources.</p>
+            </main>
+            <aside class="sidebar">
+                <h2>Regions</h2>
+                <ul>
+                    <li><a href="#">South African Coast</a></li>
+                    <li><a href="#">Boulders (Penguin Reserve)</a></li>
+                    <li><a href="#">Namibia (historical)</a></li>
+                    <li><a href="#">Conservation projects</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('about')">About</a>
+            <a onclick="showPage('services')">Services</a>
+            <a onclick="showPage('antarctica')">Antarctica</a>
+            <a onclick="showPage('southamerica')">South America</a>
+            <a onclick="showPage('africa')">Africa</a>
+            <a onclick="showPage('oceania')">Oceania</a>
+            <a onclick="showPage('australia')">Australia</a>
+            <a onclick="showPage('contact')">Contact</a>
+        </div>
+        <p class="copyright">© 2024 Penguin World - All rights reserved</p>
+    </footer>
+
+    <!-- BOTÓN BACK TO TOP -->
+    <a href="#top" class="back-to-top show" id="backToTop" aria-label="Volver arriba">↑</a>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
+
+

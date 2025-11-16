@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: #f5f3f0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.contact-container {
+    width: 100%;
+    max-width: 1200px;
+    background: #f5f3f0;
+}
+
+/* Grid principal de 2 columnas */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Sección de imagen (columna izquierda) */
+.image-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-placeholder {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 3/4;
+    background: #e8e6e3;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Sección del formulario (columna derecha) */
+.form-section {
+    padding: 20px 0;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 400;
+    color: #0a1f44;
+    margin-bottom: 50px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+/* Estilos del formulario */
+form {
+    margin-bottom: 50px;
+}
+
+.form-field {
+    margin-bottom: 35px;
+    position: relative;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #666;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #999;
+    font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+    border-bottom-color: #0a1f44;
+}
+
+textarea {
+    resize: none;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0a1f44;
+    transition: width 0.3s ease;
+}
+
+input:focus ~ .underline,
+textarea:focus ~ .underline {
+    width: 100%;
+}
+
+/* Botón de contacto */
+.contact-btn {
+    background-color: #0a1f44;
+    color: white;
+    border: none;
+    padding: 18px 50px;
+    font-size: 1rem;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(10, 31, 68, 0.3);
+}
+
+.contact-btn:hover {
+    background-color: #152d5a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(10, 31, 68, 0.4);
+}
+
+.contact-btn:active {
+    transform: translateY(0);
+}
+
+/* Grid de información (Contact y Based in) */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.info-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0a1f44;
+    margin-bottom: 8px;
+}
+
+.info-item p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Enlaces sociales */
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: #0a1f44;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-links a:hover {
+    color: #152d5a;
+    transform: translateY(-3px);
+}
+
+.social-links svg {
+    width: 32px;
+    height: 32px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .image-section {
+        order: 2;
+    }
+    
+    .form-section {
+        order: 1;
+    }
+    
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+    
+    .contact-grid {
+        gap: 30px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .contact-btn {
+        width: 100%;
+        padding: 16px;
+    }
+    
+    .image-placeholder {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .form-field {
+        margin-bottom: 25px;
+    }
+    
+    input,
+    textarea {
+        font-size: 0.95rem;
+    }
+    
+    .image-placeholder {
+        max-width: 280px;
+    }
+    
+    .social-links {
+        justify-content: center;
+        gap: 25px;
+    }
+}
