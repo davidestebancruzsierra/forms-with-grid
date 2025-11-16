@@ -1,26 +1,35 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Requirement #5: HTML5 Boilerplate - Standard HTML5 document structure -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Penguin World</title>
+    <!-- Requirement #12: External CSS - Linking external stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Requirement #6: Landing Page Navigation - Header with navigation links -->
+    <!-- Requirement #18: ID Selector - #top used for scroll anchor -->
     <header id="top">
+        <!-- Logo container - using semantic HTML structure -->
         <div class="image-container">
             <a href="index.html">
                 <img src="./assets/pinguinologo.jpg" alt="Penguin Logo">
             </a>
         </div>
 
+        <!-- Requirement #7: Multi-Page Navigation - Main navigation menu -->
+        <!-- Requirement #21: Link Pseudo-Classes - All link states styled in CSS -->
         <nav>
             <a href="index.html">Home</a>
             <a href="Pages/about.html">About</a>
 
+            <!-- Dropdown menu for Services with fragment navigation -->
             <div class="dropdown">
                 <a href="Pages/services.html">Services </a>
                 <div class="dropdown-content">
+                    <!-- Fragment navigation examples (#tours, #conservation, etc.) -->
                     <a href="Pages/services.html#tours">Penguin Tours</a>
                     <a href="Pages/services.html#conservation">Conservation Programs</a>
                     <a href="Pages/services.html#workshops">Educational Workshops</a>
@@ -29,18 +38,25 @@
             </div>
 
             <a href="Pages/contact.html">Contact</a>
+            <!-- Requirement #10: Inline CSS - style attribute used here -->
+            <a href="requirements-demo.html" style="color: #FFD700;">📋 Demo</a>
         </nav>
     </header>
 
+    <!-- Requirement #8: HTML Structure & Formatting - Proper nesting and indentation -->
+    <!-- Requirement #13: Block Elements - div, main, aside are block-level elements -->
     <div class="page">
         <div class="container">
+            <!-- Main content area - semantic HTML5 element -->
             <main class="main-content">
+                <!-- Requirement #10: Inline CSS - style attribute examples below -->
                 <div class="welcome-container">
                     <h1>Welcome to the World of Penguins! </h1>
                     
                     <div class="welcome-content">
                         <p>Dive into the fascinating universe of these incredible seabirds that have captured the hearts of millions around the world. In our digital sanctuary, we celebrate the majesty, curiosity, and unique charm of penguins.</p>
                         
+                        <!-- Requirement #14: Inline Elements - ul, li contain inline content -->
                         <div class="penguin-facts">
                             <h2>Did you know...?</h2>
                             <ul>
@@ -61,7 +77,9 @@
                     </div>
                 </div>
 
-                <!-- Contenido adicional para demostrar sticky behavior -->
+                <!-- Requirement #9: HTML Comments - Explaining why this section exists -->
+                <!-- This section demonstrates inline CSS styling and provides additional content -->
+                <!-- Requirement #10: Inline CSS - style="margin-top: 40px;" -->
                 <div class="penguin-facts" style="margin-top: 40px;">
                     <h2>Why Penguins Matter</h2>
                     <ul>
@@ -72,18 +90,22 @@
                     </ul>
                 </div>
 
+                <!-- Requirement #10: Inline CSS - Multiple style properties in one attribute -->
                 <p style="margin-top: 30px;">Scroll down to see how the sidebar stays fixed while you navigate through the content. This sticky behavior makes it easy to access different penguin habitat pages at any time, even when you're reading through long articles.</p>
 
+                <!-- Requirement #10: Inline CSS - Complex styling with gradient background -->
                 <div style="background: linear-gradient(135deg, #e3f2fd 0%, #f8fdff 100%); padding: 30px; border-radius: 12px; margin-top: 30px; border: 2px solid #5cb3cc;">
                     <h2 style="color: #2c3e50; margin-bottom: 15px;">Our Mission</h2>
                     <p>We believe that education and awareness are the keys to conservation. Through this platform, we aim to inspire people of all ages to appreciate and protect these remarkable birds. Every visitor, every reader, every person who learns about penguins becomes a potential advocate for their protection.</p>
                     <p style="margin-top: 15px;">Join us in celebrating and protecting penguins worldwide. Together, we can ensure that future generations will continue to marvel at these incredible creatures in their natural habitats.</p>
                 </div>
 
+                <!-- Requirement #10: Inline CSS - Another example with border styling -->
                 <div style="margin-top: 40px; padding: 25px; background: #fff; border-left: 5px solid #FF00FF; border-radius: 8px;">
                     <h2 style="color: #2c3e50; margin-bottom: 15px;">Get Involved</h2>
                     <p>There are many ways you can help protect penguins:</p>
                     <ul style="margin-top: 15px; margin-left: 20px; line-height: 1.8;">
+                        <!-- Requirement #14: Inline Elements - <a> and <span> are inline -->
                         <li>Visit our <a href="Pages/services.html" style="color: #5cb3cc; text-decoration: underline;">Services page</a> to learn about tours and adoption programs</li>
                         <li>Support penguin conservation organizations</li>
                         <li>Reduce your carbon footprint to combat climate change</li>
@@ -92,9 +114,12 @@
                     </ul>
                 </div>
             </main>
+            <!-- Requirement #13: Block Elements - aside is a block-level semantic element -->
+            <!-- Requirement #24: Flexbox Container - sidebar uses flexbox for layout -->
             <aside class="sidebar">
                 <h2>Penguin Habitats</h2>
                 <ul>
+                    <!-- Requirement #7: Multi-Page Navigation - Links to different pages -->
                     <li><a href="Pages/antarctica.html">Antarctica</a></li>
                     <li><a href="Pages/southamerica.html">South America</a></li>
                     <li><a href="Pages/africa.html">Africa</a></li>
@@ -104,8 +129,11 @@
         </div>
     </div>
 
+    <!-- Requirement #13: Block Elements - footer is a block-level semantic element -->
+    <!-- Requirement #24: Flexbox Container - footer-links uses flexbox -->
     <footer>
         <div class="footer-links">
+            <!-- Requirement #21: Link Pseudo-Classes - All states styled in CSS -->
             <a href="index.html">Home</a>
             <a href="Pages/about.html">About</a>
             <a href="Pages/services.html">Services</a>
@@ -116,9 +144,10 @@
             <a href="Pages/australia.html">Australia</a>
             <a href="Pages/contact.html">Contact</a>
         </div>
-        <p class="copyright"> 2024 Penguin World - All rights reserved</p>
+        <p class="copyright">© 2024 Penguin World - All rights reserved</p>
     </footer>
 
+    <!-- Requirement #15: Inline-Block Elements - back-to-top button uses inline-block display -->
     <a href="#" class="back-to-top show" aria-label="Volver arriba" title="Back to top"></a>
 </body>
 </html>

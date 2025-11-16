@@ -1,0 +1,290 @@
+/* ========================================
+   CONTACT US 2 (Minimal Form)
+   ======================================== */
+
+.contact-minimal-section {
+    background-color: #F2EDE6;
+    border-radius: 20px;
+    padding: 60px 80px;
+    margin: 40px auto;
+    width: 960px;
+    max-width: 100%;
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Grid principal de 2 columnas */
+.contact-minimal-grid {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Sección de imagen (columna izquierda) */
+.minimal-image-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0px;
+}
+
+.minimal-image-placeholder {
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 3/4;
+    background: #F2EDE6;
+    border-radius: 100 100px 100px 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.minimal-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0px 100px 0px 100px;
+}
+
+/* Sección del formulario (columna derecha) */
+.minimal-form-section {
+    padding: 20px 0;
+}
+
+.minimal-form-section h2 {
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #00054B;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    font-family: 'Playfair Display', serif;
+    border-top: none;
+    padding-top: 0;
+}
+
+.minimal-form-section h2::before {
+    display: none;
+}
+
+/* Grid de contenido: formulario a la izquierda, info a la derecha */
+.minimal-content-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+}
+
+.minimal-info-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 20px;
+}
+
+/* Estilos del formulario minimalista */
+.minimal-form-field {
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.contact-minimal-section input,
+.contact-minimal-section textarea {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #666;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #00054B;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-minimal-section input::placeholder,
+.contact-minimal-section textarea::placeholder {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.contact-minimal-section input:focus,
+.contact-minimal-section textarea:focus {
+    border-bottom-color: #00054B;
+}
+
+.contact-minimal-section textarea {
+    resize: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Botón de contacto minimalista */
+.minimal-contact-btn {
+    background-color: #00054B;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 5, 75, 0.3);
+    margin-top: 5px;
+}
+
+.minimal-contact-btn:hover {
+    background-color: #000a66;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 5, 75, 0.4);
+}
+
+.minimal-contact-btn:active {
+    transform: translateY(0);
+}
+
+/* Contenedor para botón e iconos sociales en la misma línea */
+.button-social-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 5px;
+}
+
+/* Estilos para items de información */
+.minimal-info-item {
+    margin-bottom: 15px;
+}
+
+.minimal-info-item h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #00054B;
+    margin-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.minimal-info-item p {
+    font-size: 0.9rem;
+    color: #00054B;
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+/* Enlaces sociales */
+.minimal-social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 0;
+}
+
+.minimal-social-links a {
+    color: #00054B;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.minimal-social-links a:hover {
+    color: #000a66;
+    transform: translateY(-3px);
+}
+
+.minimal-social-links svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Responsive para formulario minimalista */
+@media (max-width: 1024px) {
+    .contact-minimal-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .minimal-image-section {
+        order: 2;
+    }
+    
+    .minimal-form-section {
+        order: 1;
+    }
+    
+    .minimal-form-section h2 {
+        font-size: 3rem;
+    }
+    
+    .minimal-content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .minimal-info-sidebar {
+        padding-left: 0;
+        flex-direction: row;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-minimal-section {
+        padding: 40px 30px;
+    }
+    
+    .minimal-form-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+    
+    .contact-minimal-grid {
+        gap: 30px;
+    }
+    
+    .minimal-contact-btn {
+        width: 100%;
+        padding: 16px;
+    }
+    
+    .minimal-image-placeholder {
+        max-width: 350px;
+    }
+    
+    .minimal-info-sidebar {
+        flex-direction: column;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-minimal-section {
+        padding: 30px 20px;
+    }
+    
+    .minimal-form-section h2 {
+        font-size: 2rem;
+    }
+    
+    .minimal-form-field {
+        margin-bottom: 25px;
+    }
+    
+    .contact-minimal-section input,
+    .contact-minimal-section textarea {
+        font-size: 0.95rem;
+    }
+    
+    .minimal-image-placeholder {
+        max-width: 280px;
+    }
+    
+    .minimal-social-links {
+        justify-content: center;
+        gap: 25px;
+    }
+}

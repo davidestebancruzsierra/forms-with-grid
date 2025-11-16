@@ -1,0 +1,187 @@
+/* ========================================
+   CONTACT US 3 (Booking Form)
+   ======================================== */
+
+.booking-form-section {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 100px 60px;
+    margin: 40px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.booking-form-container h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 8px;
+    font-family: 'Montserrat', sans-serif;
+    border-top: none;
+    padding-top: 0;
+}
+
+.booking-subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 35px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.booking-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.booking-form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.booking-form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-form-field label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 8px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.booking-form-field input,
+.booking-form-field textarea,
+.booking-form-field select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    background-color: #F5F5F5;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.booking-form-field input::placeholder,
+.booking-form-field textarea::placeholder {
+    color: #999;
+}
+
+.booking-form-field input:focus,
+.booking-form-field textarea:focus,
+.booking-form-field select:focus {
+    border-color: #4A90E2;
+    background-color: #FFF;
+}
+
+.booking-form-field textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.booking-form-field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.country-code {
+    width: 80px;
+    flex-shrink: 0;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 25px;
+    cursor: pointer;
+}
+
+.booking-submit-btn {
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.booking-submit-btn:hover {
+    background-color: #3A7BC8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+}
+
+.booking-submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive para formulario de reserva */
+@media (max-width: 768px) {
+    .booking-form-section {
+        padding: 40px 30px;
+    }
+    
+    .booking-form-container h2 {
+        font-size: 3rem;
+    }
+    
+    .booking-form-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    
+    .booking-submit-btn {
+        width: 100%;
+        justify-content: center;
+        float: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .booking-form-section {
+        padding: 30px 20px;
+    }
+    
+    .booking-form-container h2 {
+        font-size: 1.5rem;
+    }
+    
+    .booking-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .booking-form-field label {
+        font-size: 0.85rem;
+    }
+    
+    .booking-form-field input,
+    .booking-form-field textarea,
+    .booking-form-field select {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .country-code {
+        width: 80px;
+    }
+}

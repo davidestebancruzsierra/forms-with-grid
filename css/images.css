@@ -1,0 +1,104 @@
+﻿    width: 75%;
+    height: auto;
+    display: block;
+    margin: 18px auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.small-img-sm {
+    max-width: 225px;
+    width: 75%;
+    height: auto;
+    display: block;
+}
+
+/* Antarctica Photos Container */
+
+.antarctica-photos {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0 22px 0;
+    flex-wrap: nowrap;
+}
+
+.antarctica-photos img {
+    max-width: 420px;
+    width: auto;
+    flex: 0 0 420px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .antarctica-photos img {
+        max-width: 220px;
+        flex: 0 0 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .antarctica-photos {
+        flex-wrap: wrap;
+    }
+    .antarctica-photos img {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Flex Media Component */
+
+.media {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.media img {
+    flex: 0 0 220px;
+    max-width: 40%;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    margin: 0;
+    align-self: flex-start;
+}
+
+.media .media-body {
+    flex: 1 1 auto;
+}
+
+.media--right {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+    .media {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .media img {
+        max-width: 100%;
+        flex: 0 0 auto;
+    }
+
+    .media .media-body {
+        width: 100%;
+    }
+
+    .media--right {
+        flex-direction: column;
+    }
+}
+
+/* ========================================
+   5. SIDEBAR
+   ======================================== */
+

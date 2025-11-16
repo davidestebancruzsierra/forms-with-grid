@@ -1,0 +1,121 @@
+﻿   8. RESPONSIVE (GLOBAL)
+   ======================================== */
+
+.back-to-top {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 8px 12px;
+    }
+
+    .page {
+        padding-top: 104px;
+        flex-direction: column;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        order: -1;
+        position: relative;
+        top: 0;
+        max-height: none;
+    }
+
+    .main-content {
+        padding: 25px 20px;
+    }
+
+    .welcome-container {
+        padding: 20px 15px;
+    }
+
+    .welcome-container h1 {
+        font-size: 2em;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .back-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 52px;
+        height: 52px;
+        font-size: 20px;
+    }
+
+    .back-to-top::after {
+        font-size: 8px;
+        bottom: -20px;
+    }
+
+    /* Mantener animaciÃ³n visible en mÃ³viles */
+    .sidebar::before {
+        top: -28px;
+        font-size: 10px;
+        padding: 3px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .main-content {
+        padding: 20px 15px;
+    }
+
+    .welcome-container h1 {
+        font-size: 1.8em;
+    }
+
+    .welcome-content p {
+        font-size: 1em;
+    }
+
+    .footer-links {
+        gap: 15px;
+    }
+
+    .footer-links a {
+        font-size: 12px;
+    }
+
+    .back-to-top {
+        bottom: 12px;
+        right: 12px;
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+    }
+
+    .back-to-top::after {
+        font-size: 7px;
+        bottom: -18px;
+        padding: 2px 5px;
+    }
+}
+
+/* ========================================
+   9. AUSTRALIA PAGE (Sidebar Right)
+   ======================================== */
+
+.page--sidebar-right {
+    display: flex;
+    flex-direction: row;
+}
+
+.page--sidebar-right .container {

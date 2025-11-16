@@ -1,0 +1,141 @@
+﻿    border-radius: 20px;
+    padding: 60px 80px;
+    margin: 30px auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    width: 960px;
+    max-width: 100%;
+    min-height: 540px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-form-section h2 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+    border-top: none;
+    padding-top: 0;
+}
+
+.contact-form-section .form-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Grid para los campos del formulario */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Estilos para los inputs del formulario */
+.contact-form-section input,
+.contact-form-section textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    color: #333;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+}
+
+.contact-form-section textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.contact-form-section input::placeholder,
+.contact-form-section textarea::placeholder {
+    color: #aaa;
+}
+
+.contact-form-section input:focus,
+.contact-form-section textarea:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* BotÃ³n de envÃ­o */
+.submit-btn {
+    margin-top: 10px;
+    padding: 12px 35px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #667eea;
+    background: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Responsive para el formulario */
+@media (max-width: 768px) {
+    .contact-form-section {
+        padding: 40px 30px;
+    }
+    
+    .contact-form-section h2 {
+        font-size: 2rem;
+    }
+    
+    .contact-form-section .form-subtitle {
+        font-size: 1rem;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form-section {
+        padding: 30px 20px;
+    }
+    
+    .contact-form-section h2 {
+        font-size: 1.75rem;
+    }
+    
+    .contact-form-section input,
+    .contact-form-section textarea {
+        padding: 15px 18px;
+    }
+    
+    .submit-btn {
+        width: 100%;
+        padding: 16px;
+    }
+}
+

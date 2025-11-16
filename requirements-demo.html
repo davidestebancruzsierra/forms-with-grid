@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirements Demo - Penguin World</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Requirement #11: INTERNAL CSS with <style> element -->
+    <style>
+        /* Internal CSS Example - This styles elements specifically for this demo page */
+        .demo-section {
+            background-color: #f0f8ff;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid #5cb3cc;
+        }
+
+        .demo-section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-top: none;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .code-example {
+            background-color: #282c34;
+            color: #61dafb;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Requirement #9: HTML Comments explaining structure -->
+    <!-- This header is shared across all pages for consistent navigation -->
+    <header id="top">
+        <div class="image-container">
+            <a href="index.html">
+                <img src="./assets/pinguinologo.jpg" alt="Penguin Logo">
+            </a>
+        </div>
+
+        <!-- Main navigation with dropdown menu for Services -->
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Pages/about.html">About</a>
+
+            <div class="dropdown">
+                <a href="Pages/services.html">Services ▼</a>
+                <div class="dropdown-content">
+                    <a href="Pages/services.html#tours">Penguin Tours</a>
+                    <a href="Pages/services.html#conservation">Conservation Programs</a>
+                    <a href="Pages/services.html#workshops">Educational Workshops</a>
+                    <a href="Pages/services.html#adoption">Adoption Program</a>
+                </div>
+            </div>
+
+            <a href="Pages/Contact Us/contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="page">
+        <div class="container">
+            <!-- Requirement #18: ID Selector - unique hero section -->
+            <main class="main-content" id="hero-section">
+                <h1>Course Requirements Demonstration Page</h1>
+                <p>This page showcases all the required HTML/CSS elements for Course 1 Project</p>
+
+                <!-- Requirement #10: INLINE CSS Example -->
+                <div style="background-color: #e8f5e9; padding: 20px; border: 2px solid #4caf50; border-radius: 8px; margin: 20px 0;">
+                    <h3 style="color: #2e7d32; margin-bottom: 10px;">✓ Requirement #10: Inline CSS</h3>
+                    <p style="color: #1b5e20; font-size: 14px;">This box uses inline CSS with the style attribute to apply background-color, padding, border, and more.</p>
+                </div>
+
+                <!-- Requirement #11: Internal CSS (styled in <head> above) -->
+                <div class="demo-section">
+                    <h2>✓ Requirement #11: Internal CSS</h2>
+                    <p>This section is styled using the <code>&lt;style&gt;</code> block in the <code>&lt;head&gt;</code> of this page.</p>
+                    <div class="highlight-box">
+                        <strong>Classes defined in internal CSS:</strong> .demo-section, .highlight-box, .code-example
+                    </div>
+                </div>
+
+                <!-- Requirement #13: BLOCK Elements -->
+                <div class="demo-section">
+                    <h2>✓ Requirement #13: Block Elements</h2>
+                    <p>Block elements take up the full width available and start on a new line.</p>
+                    <div class="code-example">
+                        &lt;div&gt;, &lt;p&gt;, &lt;h1-h6&gt;, &lt;header&gt;, &lt;main&gt;, &lt;footer&gt;, &lt;section&gt;
+                    </div>
+                    <p>Examples: This paragraph, the div containers, and all heading elements are block-level.</p>
+                </div>
+
+                <!-- Requirement #14: INLINE Elements -->
+                <div class="demo-section">
+                    <h2>✓ Requirement #14: Inline Elements</h2>
+                    <p>
+                        Inline elements only take up as much width as necessary and don't start on a new line. 
+                        For example: <strong>this strong tag</strong>, <em>this emphasis tag</em>, 
+                        <a href="#" style="color: #5cb3cc;">this link</a>, and 
+                        <span style="background-color: yellow; padding: 2px 5px;">this span element</span> 
+                        are all inline elements that flow within the text.
+                    </p>
+                </div>
+
+                <!-- Requirement #15: INLINE-BLOCK Elements -->
+                <div class="demo-section">
+                    <h2>✓ Requirement #15: Inline-Block Elements</h2>
+                    <p>Inline-block elements flow inline but can have width and height like blocks:</p>
+                    <div style="margin: 15px 0;">
+                        <span style="display: inline-block; background: #5cb3cc; color: white; padding: 10px 20px; margin: 5px; border-radius: 5px;">Box 1</span>
+                        <span style="display: inline-block; background: #FF00FF; color: white; padding: 10px 20px; margin: 5px; border-radius: 5px;">Box 2</span>
+                        <span style="display: inline-block; background: #4a9fd8; color: white; padding: 10px 20px; margin: 5px; border-radius: 5px;">Box 3</span>
+                    </div>
+                    <p>These boxes flow inline but respect padding, margin, width, and height.</p>
+                </div>
+
+                <!-- Requirement #18: ID Selector Example -->
+                <div class="demo-section" id="id-selector-demo">
+                    <h2>✓ Requirement #18: ID Selector</h2>
+                    <p>This section has id="id-selector-demo" and the #hero-section above has unique styling.</p>
+                    <div class="code-example">
+                        CSS: #hero-section { background: gradient; padding: 60px; }<br>
+                        CSS: #top { scroll-margin-top: 96px; }
+                    </div>
+                    <p>ID selectors are unique and styled with # in CSS.</p>
+                </div>
+
+                <!-- Requirement #21: Pseudo-Classes & All Link States -->
+                <div class="demo-section">
+                    <h2>✓ Requirement #21: Pseudo-Classes & Link States</h2>
+                    <p>All four link states are implemented in styles.css:</p>
+                    <div class="code-example">
+                        a:link { color: #5cb3cc; }    /* Unvisited link */<br>
+                        a:visited { color: #4a9fd8; }  /* Visited link */<br>
+                        a:hover { color: #FF00FF; }    /* Mouse over link */<br>
+                        a:active { color: #ff1aff; }   /* Clicked link */
+                    </div>
+                    <p>Try these links: <a href="#demo1">Link 1</a> | <a href="#demo2">Link 2</a> | <a href="https://example.com">External Link</a></p>
+                </div>
+
+                <!-- Requirement #22 & #23: FLOAT and CLEAR -->
+                <div class="demo-section">
+                    <h2>✓ Requirements #22 & #23: Float and Clear</h2>
+                    
+                    <!-- Floated image -->
+                    <img src="./assets/pinguinologo.jpg" alt="Penguin Logo" class="float-left" style="float: left; margin-right: 20px; margin-bottom: 15px; max-width: 200px; border-radius: 8px;">
+                    
+                    <p>This image is floated to the left using <code>float: left;</code> CSS property. The text wraps around it naturally. Floats were one of the original methods for creating layouts before Flexbox and Grid.</p>
+                    
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. The floated image appears on the left side, and this text flows around it. This demonstrates how float property works for positioning elements.</p>
+                    
+                    <!-- Clear the float -->
+                    <div class="clearfix" style="clear: both;"></div>
+                    
+                    <div class="highlight-box" style="margin-top: 15px;">
+                        <strong>Float cleared!</strong> This box appears below the floated image because of <code>clear: both;</code> property.
+                    </div>
+
+                    <div class="code-example">
+                        .float-left { float: left; margin-right: 20px; }<br>
+                        .clearfix { clear: both; }
+                    </div>
+                </div>
+
+                <!-- Requirement #27: OVERFLOW Property -->
+                <div class="demo-section">
+                    <h2>✓ Requirement #27: Overflow Property</h2>
+                    
+                    <h3>Example 1: overflow: scroll</h3>
+                    <div class="overflow-scroll" style="max-height: 150px; overflow-y: scroll; border: 2px solid #5cb3cc; padding: 15px; background: white;">
+                        <p><strong>This box has overflow-y: scroll</strong></p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+
+                    <h3 style="margin-top: 20px;">Example 2: overflow: hidden</h3>
+                    <div class="overflow-hidden" style="max-height: 80px; overflow: hidden; border: 2px solid #FF00FF; padding: 15px; background: white;">
+                        <p><strong>This box has overflow: hidden</strong></p>
+                        <p>Content that exceeds the max-height is hidden and not accessible.</p>
+                        <p>This paragraph won't be visible because it's cut off.</p>
+                        <p>Neither will this one.</p>
+                    </div>
+
+                    <div class="code-example" style="margin-top: 15px;">
+                        .overflow-scroll { max-height: 150px; overflow-y: scroll; }<br>
+                        .overflow-hidden { max-height: 80px; overflow: hidden; }
+                    </div>
+                </div>
+
+                <!-- Requirement #24 & #25: FLEXBOX -->
+                <div class="demo-section">
+                    <h2>✓ Requirements #24 & #25: Flexbox Container & Items</h2>
+                    <p><strong>Flex Container Properties:</strong> display: flex, flex-direction, justify-content, align-items, gap</p>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px; background: #e3f2fd; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                        <div style="flex: 1; background: #5cb3cc; color: white; padding: 20px; text-align: center; border-radius: 5px;">
+                            Flex Item 1<br>(flex: 1)
+                        </div>
+                        <div style="flex: 2; background: #FF00FF; color: white; padding: 20px; text-align: center; border-radius: 5px;">
+                            Flex Item 2<br>(flex: 2 - twice as wide)
+                        </div>
+                        <div style="flex: 1; background: #4a9fd8; color: white; padding: 20px; text-align: center; border-radius: 5px;">
+                            Flex Item 3<br>(flex: 1)
+                        </div>
+                    </div>
+
+                    <p><strong>Flex Item Properties:</strong> flex, flex-grow, flex-shrink, flex-basis, order</p>
+                </div>
+
+                <!-- Requirement #26: GRID -->
+                <div class="demo-section">
+                    <h2>✓ Requirement #26: CSS Grid</h2>
+                    <p><strong>Grid Properties:</strong> display: grid, grid-template-columns, gap, grid-column</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 15px 0;">
+                        <div style="background: #5cb3cc; color: white; padding: 20px; text-align: center; border-radius: 5px;">Grid Cell 1</div>
+                        <div style="background: #FF00FF; color: white; padding: 20px; text-align: center; border-radius: 5px;">Grid Cell 2</div>
+                        <div style="background: #4a9fd8; color: white; padding: 20px; text-align: center; border-radius: 5px;">Grid Cell 3</div>
+                        <div style="background: #764ba2; color: white; padding: 20px; text-align: center; border-radius: 5px; grid-column: 1 / -1;">
+                            Grid Cell 4 (spans all columns with grid-column: 1 / -1)
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+                        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }<br>
+                        .full-width { grid-column: 1 / -1; }
+                    </div>
+                </div>
+
+                <!-- Navigation back to main pages -->
+                <div style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; text-align: center;">
+                    <h2 style="color: white; margin-bottom: 20px;">✓ All Requirements Demonstrated!</h2>
+                    <p style="color: white; margin-bottom: 20px;">Explore the full website to see these concepts in action across multiple pages.</p>
+                    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                        <a href="index.html" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600;">Home</a>
+                        <a href="Pages/about.html" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600;">About</a>
+                        <a href="Pages/services.html" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600;">Services</a>
+                        <a href="Pages/Contact Us/contact.html" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600;">Contact</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer with proper semantic HTML -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="Pages/about.html">About</a>
+            <a href="Pages/services.html">Services</a>
+            <a href="Pages/Contact Us/contact.html">Contact</a>
+            <a href="Pages/Continents/antarctica.html">Antarctica</a>
+            <a href="Pages/Continents/africa.html">Africa</a>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Penguin World. All rights reserved. | Created by David Esteban Cruz Sierra
+        </div>
+    </footer>
+
+    <!-- Back to top button (inline-block example) -->
+    <a href="#top" class="back-to-top" title="Back to top">↑</a>
+</body>
+</html>

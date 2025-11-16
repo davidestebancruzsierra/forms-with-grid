@@ -1,0 +1,68 @@
+﻿    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #FF00FF, #4a9fd8);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 0, 255, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1001;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    cursor: pointer;
+}
+
+/* AÃ±adir label visible para mayor claridad */
+.back-to-top::after {
+    content: "TOP";
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: bold;
+    color: #FF00FF;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 0, 255, 0.6);
+    background: linear-gradient(45deg, #ff1aff, #5cb3cc);
+}
+
+/* AnimaciÃ³n de pulso para llamar la atenciÃ³n */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(255, 0, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(255, 0, 255, 0.8);
+    }
+}
+
+.back-to-top:focus {
+    outline: none;
+}
+
+/* ========================================
+   8. RESPONSIVE (GLOBAL)

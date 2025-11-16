@@ -1,0 +1,88 @@
+﻿
+.sidebar {
+    width: 100%;
+    background-color: #2a2a2a;
+    padding: 30px 20px;
+    position: static;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+    border-radius: 8px;
+    border: 2px solid #5cb3cc;
+    box-shadow: 0 4px 12px rgba(92, 179, 204, 0.3), 0 0 0 3px rgba(255, 0, 255, 0.2);
+    transition: all 0.3s ease;
+    order: 2;
+}
+
+/* Indicador visual cuando el sidebar estÃ¡ en modo sticky (scrolling) */
+.sidebar::before {
+    content: "FIXED";
+    position: absolute;
+    top: -30px;
+    right: 10px;
+    background: linear-gradient(45deg, #FF00FF, #4a9fd8);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    display: none;
+}
+
+/* Mostrar indicador cuando se hace scroll (simulado con hover para demo) */
+.page:not(:hover) .sidebar::before {
+    opacity: 0;
+}
+
+.sidebar h2 {
+    color: #999;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    border-bottom: 1px solid #5cb3cc;
+    padding-bottom: 8px;
+}
+
+.sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.sidebar ul li {
+    margin-bottom: 0;
+}
+
+/* Requirement #21: Complete Link Pseudo-Classes */
+/* All four link states: :link, :visited, :hover, :active */
+.sidebar ul li a:link {
+    color: #5cb3cc;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar ul li a:visited {
+    color: #4a9fd8; /* Visited links are slightly darker blue */
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    color: #FF00FF; /* Magenta on hover */
+    padding-left: 10px;
+    text-decoration: none;
+}
+
+.sidebar ul li a:active {
+    color: #ff1aff; /* Bright magenta when clicked */
+    text-decoration: none;
+}
+
+/* ========================================
+   6. FOOTER
+   ======================================== */

@@ -1,0 +1,159 @@
+﻿
+/* ========================================
+   3. PAGE LAYOUT & STRUCTURE
+   ======================================== */
+
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+    padding-top: 84px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.main-content {
+    flex: 1;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 30px 40px;
+    border-radius: 8px;
+}
+
+/* Special background for Contact Us 2 page */
+.contact2-page .main-content {
+    background-color: #AED3CF;
+}
+
+.main-content h1 {
+    font-size: 28px;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.main-content h2 {
+    font-size: 22px;
+    color: #2c3e50;
+    margin: 25px 0 15px 0;
+    padding-top: 15px;
+    border-top: 2px solid #5cb3cc;
+}
+
+.main-content p {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Welcome Container (Home Page) */
+
+.welcome-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8fdff 0%, #e3f2fd 100%);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #4a9fd8;
+}
+
+.welcome-container h1 {
+    color: #2c3e50;
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-content p {
+    color: #34495e;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+.penguin-facts {
+    background-color: #ffffff;
+    padding: 18px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 5px solid #FF00FF;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.penguin-facts h2 {
+    color: #2c3e50;
+    margin-bottom: 12px;
+    font-size: 1.3em;
+    border: none;
+    padding: 0;
+}
+
+.penguin-facts ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.penguin-facts li {
+    color: #34495e;
+    padding: 6px 0;
+    padding-left: 22px;
+    position: relative;
+    font-size: 0.95em;
+}
+
+.penguin-facts li:before {
+    content: "â–º";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FF00FF;
+    font-size: 0.8em;
+}
+
+.cta-section {
+    background: linear-gradient(45deg, #FF00FF, #4a9fd8);
+    padding: 18px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cta-section p {
+    color: white;
+    font-size: 1.1em;
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-container:hover {
+    transform: translateY(-3px);
+    transition: transform 0.3s ease;
+}
+
+.penguin-facts li:hover {
+    color: #FF00FF;
+    transform: translateX(3px);
+    transition: all 0.3s ease;
+}
+
+/* ========================================
+   4. IMAGES & MEDIA
+   ======================================== */
+
+/* Small Image Classes */
+
+.small-img {
+    max-width: 187.5px;
+    width: 75%;

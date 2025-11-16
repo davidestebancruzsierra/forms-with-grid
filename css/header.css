@@ -1,0 +1,106 @@
+﻿/* ========================================
+   2. HEADER & NAVIGATION
+   ======================================== */
+
+header {
+    background-color: #000;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    margin: 8px 12px;
+}
+
+.image-container img {
+    height: 56px;
+    width: auto;
+    display: block;
+    background: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.image-container a {
+    display: block;
+    line-height: 0;
+}
+
+/* Navigation Styles */
+
+nav {
+    display: flex;
+    gap: 18px;
+    position: relative;
+}
+
+/* Requirement #21: Complete Link Pseudo-Classes */
+/* All four link states: :link, :visited, :hover, :active */
+nav a:link {
+    color: #5cb3cc;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav a:visited {
+    color: #4a9fd8; /* Visited links are slightly darker blue */
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #FF00FF; /* Magenta on hover */
+    text-decoration: none;
+}
+
+nav a:active {
+    color: #ff1aff; /* Bright magenta when clicked */
+    text-decoration: none;
+}
+
+/* Dropdown Menu */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #111;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    border: 1px solid #333;
+    border-radius: 6px;
+    top: 25px;
+    left: 0;
+    z-index: 2000;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 10px;
+    color: #5cb3cc;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #FF00FF;
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

@@ -37,6 +37,55 @@ body {
 }
 
 /* ========================================
+   ID SELECTOR EXAMPLES
+   ======================================== */
+
+/* ID selector for unique hero section */
+#hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
+
+/* ID selector for top anchor */
+#top {
+    scroll-margin-top: 96px;
+}
+
+/* Float example for requirement #22 */
+.float-left {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    max-width: 300px;
+}
+
+/* Clear property for requirement #23 */
+.clearfix {
+    clear: both;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Overflow example for requirement #27 */
+.overflow-scroll {
+    max-height: 200px;
+    overflow-y: scroll;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.overflow-hidden {
+    max-height: 100px;
+    overflow: hidden;
+}
+
+/* ========================================
    2. HEADER & NAVIGATION
    ======================================== */
 
@@ -89,8 +138,21 @@ nav a {
     transition: color 0.3s ease;
 }
 
+/* Complete link pseudo-classes for all states */
+nav a:link {
+    color: #5cb3cc;
+}
+
+nav a:visited {
+    color: #4a9fd8;
+}
+
 nav a:hover {
     color: #FF00FF;
+}
+
+nav a:active {
+    color: #ff1aff;
 }
 
 /* Dropdown Menu */
@@ -1392,7 +1454,7 @@ footer {
 .booking-form-column {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 30px;
 }
 
 .booking-form-field {

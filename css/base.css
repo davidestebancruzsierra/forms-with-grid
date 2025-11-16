@@ -1,0 +1,19 @@
+﻿   1. BASE STYLES & RESET
+   ======================================== */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    background-color: #000;
+}
+
